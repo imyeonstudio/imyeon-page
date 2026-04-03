@@ -2,7 +2,7 @@
 <html class="dark" lang="ko">
 <head>
     <meta charset="utf-8"/>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
     <title>IMYEON STUDIO | 본질을 향한 기술의 침묵</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet"/>
@@ -36,7 +36,8 @@
         
         /* 풀페이지 스크롤 스냅 핵심 CSS */
         .scroll-container {
-            height: 100vh;
+            /* 100vh 대신 100dvh를 사용하여 모바일 브라우저 하단/상단바 간섭 방지 */
+            height: 100dvh;
             overflow-y: scroll;
             scroll-snap-type: y mandatory; /* Y축 기준으로 강제 스냅 */
             scroll-behavior: smooth;
@@ -44,7 +45,8 @@
         
         /* 각 섹션이 화면에 꽉 차도록 설정 */
         .snap-section {
-            height: 100vh;
+            /* 100vh 대신 100dvh 사용 */
+            height: 100dvh;
             width: 100%;
             scroll-snap-align: start; /* 섹션 시작점에 스냅 */
             scroll-snap-stop: always;
@@ -52,6 +54,9 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
+            /* 가로 모드 및 기본 좌우 안전 영역 패딩 */
+            padding-left: env(safe-area-inset-left);
+            padding-right: env(safe-area-inset-right);
         }
 
         .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24; }
@@ -77,7 +82,7 @@
 </head>
 <body class="text-white antialiased selection:bg-white selection:text-black">
 
-    <nav class="fixed top-0 w-full z-50 flex justify-between items-center px-8 md:px-16 py-8">
+    <nav class="fixed top-0 w-full z-50 flex justify-between items-center px-8 md:px-16 pb-8" style="padding-top: max(2rem, env(safe-area-inset-top));">
         <div class="text-2xl font-black tracking-widest uppercase text-white">IMYEON</div>
         <div class="hidden md:flex gap-12 items-center text-sm font-semibold tracking-wider">
             <a class="text-white hover:opacity-50 transition-opacity" href="#">HOME</a>
@@ -96,7 +101,7 @@
                 <img alt="Dark minimalist architecture" class="hero-zoom w-full h-full object-cover opacity-50" src="https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=2000&auto=format&fit=crop"/>
                 <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/40 to-imyeon-black"></div>
             </div>
-            <div class="relative z-10 px-8 md:px-16 max-w-7xl w-full mx-auto mt-24">
+            <div class="relative z-10 px-8 md:px-16 max-w-7xl w-full mx-auto mt-12 md:mt-24">
                 <div class="space-y-6">
                     <span class="reveal font-bold tracking-[0.3em] uppercase text-sm text-gray-400 block">Design Studio</span>
                     <h1 class="reveal delay-100 text-5xl md:text-8xl font-black tracking-tighter leading-[1.1] break-keep">
@@ -107,7 +112,7 @@
                     </p>
                 </div>
             </div>
-            <div class="absolute bottom-12 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-2 reveal delay-300 opacity-50">
+            <div class="absolute bottom-12 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-2 reveal delay-300 opacity-50" style="margin-bottom: env(safe-area-inset-bottom);">
                 <span class="text-[10px] tracking-widest uppercase">Scroll</span>
                 <div class="w-[1px] h-12 bg-white/30 overflow-hidden">
                     <div class="w-full h-full bg-white animate-[slideDown_1.5s_ease-in-out_infinite]"></div>
@@ -156,8 +161,8 @@
             </div>
         </section>
 
-        <section class="snap-section bg-imyeon-dark" style="height: auto; min-height: 50vh;">
-            <div class="max-w-7xl mx-auto px-8 md:px-16 w-full py-24 flex flex-col justify-between h-full">
+        <section class="snap-section bg-imyeon-dark" style="height: auto; min-height: 100dvh;">
+            <div class="max-w-7xl mx-auto px-8 md:px-16 w-full py-24 flex flex-col justify-between h-full" style="padding-bottom: max(6rem, calc(2rem + env(safe-area-inset-bottom)));">
                 <div class="reveal grid grid-cols-1 md:grid-cols-3 gap-16 mb-24">
                     <div class="space-y-6">
                         <div class="text-2xl font-black tracking-widest">IMYEON</div>
