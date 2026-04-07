@@ -47,7 +47,7 @@
             scroll-behavior: smooth;
             position: relative;
             z-index: 2;
-            -webkit-overflow-scrolling: touch; /* iOS 부드러운 스크롤 */
+            -webkit-overflow-scrolling: touch;
         }
         
         .snap-section {
@@ -59,11 +59,11 @@
             flex-direction: column;
             justify-content: center;
             background-color: transparent;
-            overflow: hidden; /* 내부 요소 돌출 방지 */
+            overflow: hidden;
         }
 
         .sticky-wrapper {
-            height: 400dvh; /* 모바일 가독성을 위해 스크롤 길이 약간 연장 */
+            height: 400dvh;
             scroll-snap-align: start;
             position: relative;
             background-color: transparent;
@@ -121,7 +121,7 @@
 
         .background-orb {
             position: fixed;
-            width: 120dvw; /* 모바일에서 더 풍부하게 보이도록 조정 */
+            width: 120dvw;
             height: 120dvw;
             border-radius: 50%;
             background: radial-gradient(circle, rgba(59, 130, 246, 0.6) 0%, rgba(59, 130, 246, 0.1) 40%, rgba(59, 130, 246, 0) 70%); 
@@ -162,11 +162,19 @@
             }
         }
 
+        #card-flow {
+            will-change: transform;
+        }
+
         /* Mobile Adjustments */
         @media (max-width: 768px) {
             .sticky-wrapper { height: 450dvh; }
             .hero-title-group { font-size: clamp(2rem, 10vw, 4rem); }
             .background-orb { width: 150dvw; height: 150dvw; filter: blur(60px); }
+            /* Price Card Mobile Spacing */
+            .price-card { padding: 1.5rem !important; }
+            /* Project Grid Mobile Spacing */
+            .project-grid { gap: 2rem !important; }
         }
     </style>
 </head>
@@ -223,7 +231,7 @@
                     
                     <div class="relative h-[50dvh] md:h-[100dvh] flex flex-col overflow-hidden">
                         <div id="card-flow" class="space-y-[15dvh] md:space-y-[40dvh] pt-[10dvh] md:pt-[45dvh] pb-[20dvh] transition-transform duration-500 ease-out">
-                            <div class="reveal p-6 md:p-8 border border-black/5 bg-imyeon-dark group hover:bg-imyeon-text-main transition-all duration-500 rounded-xl">
+                            <div class="p-6 md:p-8 border border-black/5 bg-imyeon-dark group hover:bg-imyeon-text-main transition-all duration-500 rounded-xl">
                                 <span class="material-symbols-outlined text-3xl md:text-4xl mb-4 md:mb-6 group-hover:text-white">cloud_done</span>
                                 <h4 class="text-base md:text-lg font-bold mb-2 group-hover:text-white text-imyeon-text-main">호스팅 기본 지원</h4>
                                 <p class="text-xs md:text-sm opacity-70 group-hover:opacity-90 font-light break-keep group-hover:text-white text-imyeon-text-sub">쾌적한 속도와 안정성을 보장하는 고성능 호스팅 환경을 기본으로 제공합니다.</p>
@@ -249,56 +257,56 @@
             </div>
         </section>
 
-        <section class="snap-section bg-transparent py-20">
+        <section class="snap-section bg-transparent py-12 md:py-20">
             <div class="max-w-7xl mx-auto px-6 md:px-16 w-full">
-                <div class="text-center mb-12 md:mb-24">
+                <div class="text-center mb-10 md:mb-24">
                     <h2 class="reveal text-4xl md:text-7xl font-black tracking-tighter mb-4 text-imyeon-text-main">Price Plan</h2>
                     <p class="reveal delay-100 text-imyeon-text-sub font-light tracking-widest uppercase text-xs md:text-base">투명하고 합리적인 비용 가이드</p>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-5xl mx-auto">
-                    <div class="reveal delay-200 price-card p-8 md:p-16 flex flex-col justify-between rounded-2xl">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 max-w-5xl mx-auto">
+                    <div class="reveal delay-200 price-card p-6 md:p-16 flex flex-col justify-between rounded-2xl">
                         <div>
                             <div class="flex justify-between items-start mb-6 md:mb-8">
                                 <div>
-                                    <h3 class="text-xl md:text-2xl font-bold mb-1 text-imyeon-text-main">실속형</h3>
-                                    <p class="text-[10px] md:text-xs text-imyeon-text-sub">Personal / Small Business</p>
+                                    <h3 class="text-lg md:text-2xl font-bold mb-1 text-imyeon-text-main">실속형</h3>
+                                    <p class="text-[9px] md:text-xs text-imyeon-text-sub">Personal / Small Business</p>
                                 </div>
-                                <span class="text-[9px] md:text-xs bg-imyeon-text-main text-white px-3 py-1.5 uppercase tracking-widest font-bold rounded-full">Recommended</span>
+                                <span class="text-[8px] md:text-xs bg-imyeon-text-main text-white px-2.5 py-1.5 uppercase tracking-widest font-bold rounded-full">Recommended</span>
                             </div>
-                            <div class="mb-8 md:mb-10 text-imyeon-text-main">
-                                <span class="text-4xl md:text-5xl font-black italic">300,000</span>
-                                <span class="text-lg md:text-xl font-bold ml-1 text-imyeon-text-sub">원</span>
+                            <div class="mb-6 md:mb-10 text-imyeon-text-main">
+                                <span class="text-3xl md:text-5xl font-black italic">300,000</span>
+                                <span class="text-base md:text-xl font-bold ml-1 text-imyeon-text-sub">원</span>
                             </div>
-                            <ul class="space-y-3 md:space-y-4 mb-10 md:mb-12 text-xs md:text-sm text-imyeon-text-sub font-light">
-                                <li class="flex items-center gap-3"><span class="material-symbols-outlined text-base">check</span> 개인용 및 중소기업 추천</li>
-                                <li class="flex items-center gap-3"><span class="material-symbols-outlined text-base">check</span> 핵심 기능 중심의 고효율 설계</li>
-                                <li class="flex items-center gap-3"><span class="material-symbols-outlined text-base">check</span> 모바일 최적화 반응형 UI</li>
-                                <li class="flex items-center gap-3"><span class="material-symbols-outlined text-base">check</span> 호스팅 및 도메인 기본 포함</li>
+                            <ul class="space-y-2 md:space-y-4 mb-8 md:mb-12 text-[11px] md:text-sm text-imyeon-text-sub font-light">
+                                <li class="flex items-center gap-3"><span class="material-symbols-outlined text-sm md:text-base">check</span> 개인용 및 중소기업 추천</li>
+                                <li class="flex items-center gap-3"><span class="material-symbols-outlined text-sm md:text-base">check</span> 핵심 기능 중심의 고효율 설계</li>
+                                <li class="flex items-center gap-3"><span class="material-symbols-outlined text-sm md:text-base">check</span> 모바일 최적화 반응형 UI</li>
+                                <li class="flex items-center gap-3"><span class="material-symbols-outlined text-sm md:text-base">check</span> 호스팅 및 도메인 기본 포함</li>
                             </ul>
                         </div>
-                        <button onclick="window.open('https://www.daangn.com/kr/local-profile/yuurs2fcq5hz/', '_blank')" class="w-full py-4 border border-imyeon-text-main/10 text-[11px] md:text-sm tracking-widest font-bold hover:bg-imyeon-text-main hover:text-white transition-colors uppercase rounded-lg text-imyeon-text-main">제작의뢰</button>
+                        <button onclick="window.open('https://www.daangn.com/kr/local-profile/yuurs2fcq5hz/', '_blank')" class="w-full py-3.5 md:py-4 border border-imyeon-text-main/10 text-[10px] md:text-sm tracking-widest font-bold hover:bg-imyeon-text-main hover:text-white transition-colors uppercase rounded-lg text-imyeon-text-main">제작의뢰</button>
                     </div>
-                    <div class="reveal delay-200 price-card p-8 md:p-16 flex flex-col justify-between border-imyeon-text-main/10 rounded-2xl bg-imyeon-dark">
+                    <div class="reveal delay-200 price-card p-6 md:p-16 flex flex-col justify-between border-imyeon-text-main/10 rounded-2xl bg-imyeon-dark">
                         <div>
                             <div class="flex justify-between items-start mb-6 md:mb-8">
                                 <div>
-                                    <h3 class="text-xl md:text-2xl font-bold mb-1 text-imyeon-text-main">고급형</h3>
-                                    <p class="text-[10px] md:text-xs text-imyeon-text-sub">Business Professional</p>
+                                    <h3 class="text-lg md:text-2xl font-bold mb-1 text-imyeon-text-main">고급형</h3>
+                                    <p class="text-[9px] md:text-xs text-imyeon-text-sub">Business Professional</p>
                                 </div>
-                                <span class="text-[9px] md:text-xs border border-imyeon-text-main/10 text-imyeon-text-sub px-3 py-1.5 uppercase tracking-widest rounded-full">Professional</span>
+                                <span class="text-[8px] md:text-xs border border-imyeon-text-main/10 text-imyeon-text-sub px-2.5 py-1.5 uppercase tracking-widest rounded-full">Professional</span>
                             </div>
-                            <div class="mb-8 md:mb-10 text-imyeon-text-main">
-                                <span class="text-4xl md:text-5xl font-black italic">500,000</span>
-                                <span class="text-lg md:text-xl font-bold ml-1 text-imyeon-text-sub">원</span>
+                            <div class="mb-6 md:mb-10 text-imyeon-text-main">
+                                <span class="text-3xl md:text-5xl font-black italic">500,000</span>
+                                <span class="text-base md:text-xl font-bold ml-1 text-imyeon-text-sub">원</span>
                             </div>
-                            <ul class="space-y-3 md:space-y-4 mb-10 md:mb-12 text-xs md:text-sm text-imyeon-text-sub font-light">
-                                <li class="flex items-center gap-3"><span class="material-symbols-outlined text-base">check</span> 전문 비즈니스 서비스 최적화</li>
-                                <li class="flex items-center gap-3"><span class="material-symbols-outlined text-base">check</span> 커스텀 인터랙션 및 애니메이션</li>
-                                <li class="flex items-center gap-3"><span class="material-symbols-outlined text-base">check</span> 페이지 확장 및 고도화 기획</li>
-                                <li class="flex items-center gap-3"><span class="material-symbols-outlined text-base">check</span> 검색 엔진 최적화(SEO) 강화</li>
+                            <ul class="space-y-2 md:space-y-4 mb-8 md:mb-12 text-[11px] md:text-sm text-imyeon-text-sub font-light">
+                                <li class="flex items-center gap-3"><span class="material-symbols-outlined text-sm md:text-base">check</span> 전문 비즈니스 서비스 최적화</li>
+                                <li class="flex items-center gap-3"><span class="material-symbols-outlined text-sm md:text-base">check</span> 커스텀 인터랙션 및 애니메이션</li>
+                                <li class="flex items-center gap-3"><span class="material-symbols-outlined text-sm md:text-base">check</span> 페이지 확장 및 고도화 기획</li>
+                                <li class="flex items-center gap-3"><span class="material-symbols-outlined text-sm md:text-base">check</span> 검색 엔진 최적화(SEO) 강화</li>
                             </ul>
                         </div>
-                        <button onclick="window.open('tel:0508-9598-8584', '_blank')" class="w-full py-4 bg-imyeon-text-main text-white text-[11px] md:text-sm tracking-widest font-bold hover:bg-imyeon-text-main/80 transition-colors uppercase rounded-lg">상담 0508-9598-8584</button>
+                        <button onclick="window.open('tel:0508-9598-8584', '_blank')" class="w-full py-3.5 md:py-4 bg-imyeon-text-main text-white text-[10px] md:text-sm tracking-widest font-bold hover:bg-imyeon-text-main/80 transition-colors uppercase rounded-lg">상담 0508-9598-8584</button>
                     </div>
                 </div>
             </div>
@@ -310,27 +318,27 @@
                     <span class="reveal font-bold tracking-[0.3em] uppercase text-[10px] text-imyeon-text-sub block mb-3">Selected Projects</span>
                     <h2 class="reveal delay-100 text-3xl md:text-6xl font-black tracking-tighter text-imyeon-text-main break-keep">이면이 증명한 <br>압도적 결과물</h2>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 project-grid">
                     <div onclick="window.open('https://atomatrix.co.kr/', '_blank')" class="reveal delay-200 group cursor-pointer">
-                        <div class="overflow-hidden bg-imyeon-dark aspect-[16/10] mb-5 rounded-xl border border-black/5">
+                        <div class="overflow-hidden bg-imyeon-dark aspect-[16/10] mb-4 md:mb-5 rounded-xl border border-black/5">
                             <img src="https://cdn.discordapp.com/attachments/983304455195869194/1490991743351525396/image.png?ex=69d611c4&is=69d4c044&hm=147c413c201db059d7e9646f6e37648c6a1af64d4dddc81942a454ddb914fe0b&" class="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-all duration-700" alt="Project 01">
                         </div>
                         <div class="flex justify-between items-end">
                             <div>
                                 <p class="text-[9px] tracking-widest text-imyeon-text-sub uppercase mb-1">Web Development / Biotech</p>
-                                <h4 class="text-lg font-bold text-imyeon-text-main">아토매트릭스 홈페이지 제작</h4>
+                                <h4 class="text-base md:text-lg font-bold text-imyeon-text-main">아토매트릭스 홈페이지 제작</h4>
                             </div>
                             <span class="material-symbols-outlined text-imyeon-text-sub group-hover:text-imyeon-text-main transition-colors">arrow_outward</span>
                         </div>
                     </div>
                     <div class="reveal delay-200 group cursor-pointer">
-                        <div class="overflow-hidden bg-imyeon-dark aspect-[16/10] mb-5 rounded-xl border border-black/5">
+                        <div class="overflow-hidden bg-imyeon-dark aspect-[16/10] mb-4 md:mb-5 rounded-xl border border-black/5">
                             <img src="https://cdn.discordapp.com/attachments/983304455195869194/1490983077034594384/image.png?ex=69d609b2&is=69d4b832&hm=4258e4a9600ad593948e21a7f4706e3ec348e4589d91859617a47e6ab7d9f1d4&" class="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-all duration-700" alt="Project 02">
                         </div>
                         <div class="flex justify-between items-end">
                             <div>
                                 <p class="text-[9px] tracking-widest text-imyeon-text-sub uppercase mb-1">UI/UX Design / Business</p>
-                                <h4 class="text-lg font-bold text-imyeon-text-main">이면 스튜디오 공식 웹사이트 v2.0</h4>
+                                <h4 class="text-base md:text-lg font-bold text-imyeon-text-main">이면 스튜디오 공식 웹사이트 v2.0</h4>
                             </div>
                             <span class="material-symbols-outlined text-imyeon-text-sub group-hover:text-imyeon-text-main transition-colors">arrow_outward</span>
                         </div>
@@ -408,18 +416,15 @@
                 const scrollHeight = container.scrollHeight - window.innerHeight;
                 const scrollPercentage = scrollTop / scrollHeight;
 
-                // 헤더 숨기기 로직 (모바일에서 컨텐츠 확보)
                 if (scrollTop > 100) { 
                     nav.classList.add('-translate-y-full', 'opacity-0');
                 } else {
                     nav.classList.remove('-translate-y-full', 'opacity-0');
                 }
 
-                // Orb 애니메이션
                 const moveX = Math.sin(scrollPercentage * Math.PI) * 60 - 15; 
                 orb.style.transform = `translateX(${moveX}dvw)`;
 
-                // Sticky 카드 스크롤 로직
                 if (!stickyWrapper || !cardFlow) return;
                 
                 const sectionTop = stickyWrapper.offsetTop;
